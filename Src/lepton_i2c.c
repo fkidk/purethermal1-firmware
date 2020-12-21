@@ -62,9 +62,13 @@ static void set_startup_defaults()
   LEP_RESULT result;
 
   /* set a default color lut so radiometric parts produce reasonable pseudocolor images */
-  result = LEP_SetVidPcolorLut(&hport_desc, PSUEDOCOLOR_LUT);
+//  result = LEP_SetVidPcolorLut(&hport_desc, PSUEDOCOLOR_LUT);
+//  if (result != LEP_OK) {
+//    DEBUG_PRINTF("Could not set default color lut: %d\r\n", result);
+//  }
+  result = LEP_SetVidVideoOutputFormat(&hport_desc, LEP_VID_VIDEO_OUTPUT_FORMAT_RAW14);
   if (result != LEP_OK) {
-    DEBUG_PRINTF("Could not set default color lut: %d\r\n", result);
+    DEBUG_PRINTF("Could not set default to raw14: %d\r\n", result);
   }
 }
 
